@@ -58,7 +58,7 @@ class tcpClient:
         done = False
         while done is False:
             lf_pos = temp_message.find(self.terminator)
-            if lf_pos != -1:
+            if lf_pos != -self.len_term:
             #We have a line feed - is it the end of the string?
                 if lf_pos == len(temp_message)-1:
                     self.logger.debug('Complete message')
