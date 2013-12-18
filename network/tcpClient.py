@@ -18,7 +18,7 @@ class tcpClient:
         self.recv_max_retries = recv_max_retries
 
         self.logger = logging.getLogger('tcpClient')
-        self.logger.setLevel(logging.INFO)
+        self.logger.setLevel(logging.DEBUG)
 
         self.conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.conn.connect((ip,port))
@@ -80,5 +80,6 @@ class tcpClient:
                 except:
                     self.logger.warn("FAILED TO RECEIVE REPLY")
                     return False
-                
+        #And remove the terminator
+        self.data_message = self.data_message[:-self.len_term]
         return True 
