@@ -1,13 +1,14 @@
 from numpy import *
 
-def allanvariance(data,tlen = None):
+def allanvariance(data,tlen = None,skip=1):
     #create mean of chunks
     if tlen is None:
         dlen = len(data)/2
     else:
         dlen = tlen
     result = []
-    for i in xrange(1,dlen):
+    for i in xrange(1,dlen, skip):
+        print i
         fp = []
         for x in return_chunk(data,i):
             fp.append(mean(x))
